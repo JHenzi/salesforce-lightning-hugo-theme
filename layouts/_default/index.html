@@ -1,0 +1,63 @@
+{{ define "main" }}
+<div class="slds-container_large slds-container_center slds-p-around_large">
+    {{- if site.Params.homeInfoParams }}
+    <article class="slds-card slds-card_boundary slds-m-bottom_x-large">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h1 class="slds-card__header-title">
+                        <span class="slds-text-heading_large">{{ site.Params.homeInfoParams.Title }}</span>
+                    </h1>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-text-longform slds-rich-text-editor-output">
+                {{ site.Params.homeInfoParams.Content | markdownify }}
+            </div>
+        </div>
+    </article>
+    {{- end }}
+
+    <div class="slds-page-header slds-m-bottom_large">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__body">
+                        <h2 class="slds-page-header__title slds-truncate" title="Recent Posts">
+                            <span class="slds-text-heading_medium">Recent Posts</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-wrap slds-gutters posts-grid">
+        {{- $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+        {{- range $paginator.Pages }}
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+            {{- partial "post-card.html" . }}
+        </div>
+        {{- end }}
+    </div>
+
+    {{- if gt $paginator.TotalPages 1 }}
+    <nav class="slds-p-around_medium" role="navigation" aria-label="Pagination">
+        <div class="slds-button-group" role="group">
+            {{- if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="slds-button slds-button_neutral">
+                ← Previous
+            </a>
+            {{- end }}
+            {{- if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="slds-button slds-button_neutral">
+                Next →
+            </a>
+            {{- end }}
+        </div>
+    </nav>
+    {{- end }}
+</div>
+{{ end }}
+

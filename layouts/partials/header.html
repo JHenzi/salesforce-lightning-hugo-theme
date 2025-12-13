@@ -1,0 +1,59 @@
+<header class="slds-page-header site-header">
+    <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    {{- $profileImg := resources.Get "profile.png" }}
+                    {{- if $profileImg }}
+                    <a href="{{ "" | absLangURL }}" class="slds-avatar slds-avatar_large" title="{{ site.Title }}">
+                        <img src="{{ $profileImg.Permalink }}" alt="{{ site.Title }}" />
+                    </a>
+                    {{- else }}
+                    {{- $profileImgStatic := "/profile.png" }}
+                    <a href="{{ "" | absLangURL }}" class="slds-avatar slds-avatar_large" title="{{ site.Title }}">
+                        <img src="{{ $profileImgStatic | absURL }}" alt="{{ site.Title }}" />
+                    </a>
+                    {{- end }}
+                </div>
+                <div class="slds-media__body">
+                    <div class="slds-page-header__name">
+                        <div class="slds-page-header__name-title">
+                            <h1 class="slds-page-header__title-wrapper">
+                                <a href="{{ "" | absLangURL }}" class="slds-page-header__title-link" title="{{ site.Title }}">
+                                    <span class="slds-page-header__title slds-truncate" title="{{ site.Title | replaceRE " - .*" "" }}">
+                                        {{ site.Title | replaceRE " - .*" "" }}
+                                    </span>
+                                </a>
+                            </h1>
+                        </div>
+                        {{- if ne (site.Title | replaceRE " - .*" "") site.Title }}
+                        <p class="slds-page-header__name-meta">
+                            <span class="slds-page-header__meta-text">{{ site.Title | replaceRE ".* - " "" }}</span>
+                        </p>
+                        {{- end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-page-header__col-actions">
+            <div class="slds-page-header__controls">
+                <div class="slds-page-header__control-group">
+                    {{- $currentPage := . }}
+                    {{- range site.Menus.main }}
+                    <div class="slds-page-header__control">
+                        <a href="{{ .URL | absLangURL }}" 
+                           class="slds-button slds-button_neutral{{ if eq ($currentPage.Permalink | absLangURL) (.URL | absLangURL) }} slds-is-selected{{ end }}"
+                           title="{{ .Title | default .Name }}">
+                            <span class="slds-button__label">{{ .Name }}</span>
+                            {{- if (findRE "://" .URL) }}
+                            <span class="slds-assistive-text">(opens in new window)</span>
+                            {{- end }}
+                        </a>
+                    </div>
+                    {{- end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+

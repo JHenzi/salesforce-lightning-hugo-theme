@@ -1,0 +1,13 @@
+{{ if .Get "summary" }}
+{{ else }}
+{{ warnf "missing value for param 'summary': %s" .Position }}
+{{ end }}
+<div class="slds-card slds-m-bottom_medium">
+  <details class="slds-card__body slds-card__body_inner" {{ if (eq (.Get "openByDefault") true) }} open=true {{ end }}>
+    <summary class="slds-text-heading_small">{{ .Get "summary" | markdownify }}</summary>
+    <div class="slds-m-top_small">
+      {{ .Inner | markdownify }}
+    </div>
+  </details>
+</div>
+

@@ -1,0 +1,28 @@
+# theme.toml template for a Hugo theme
+name = "Salesforce Lighting"
+license = "MIT"
+licenselink = "https://github.com/JHenzi/salesforce-lightning-hugo-theme/blob/main/LICENSE"
+description = "A Hugo theme based on Salesforce Lightning Design System"
+homepage = "https://github.com/JHenzi/salesforce-lightning-hugo-theme"
+tags = [
+  "responsive",
+  "salesforce",
+  "lightning",
+  "blog",
+  "modern",
+  "slds"
+]
+features = [
+  "responsive",
+  "blog",
+  "opengraph",
+  "favicon",
+  "archive",
+  "social-icons"
+]
+min_version = "0.97.1"
+
+[author]
+  name = "Joseph Henzi"
+  homepage = "https://github.com/JHenzi"
+

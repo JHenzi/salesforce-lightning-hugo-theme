@@ -1,0 +1,24 @@
+{{- /* Salesforce Lightning Design System JS (if needed) */}}
+{{- /* Note: SLDS is primarily CSS-based, but you can add JS here if needed */}}
+
+{{- /* Mermaid diagrams - load if page contains mermaid shortcode */}}
+{{- if findRE "class=\"mermaid\"" .Content }}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ startOnLoad: true });
+</script>
+{{- end }}
+
+{{- /* Search functionality */}}
+{{- if (eq .Layout `search`) -}}
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.basic.min.js"></script>
+{{- end -}}
+
+{{- /* Custom JS */}}
+{{- $customJS := resources.Get "js/custom.js" }}
+{{- if $customJS }}
+<script src="{{ $customJS.RelPermalink }}"></script>
+{{- end }}
+
+{{- partial "extend_footer.html" . -}}
+

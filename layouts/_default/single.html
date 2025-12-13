@@ -1,0 +1,103 @@
+{{ define "main" }}
+<div class="slds-container_large slds-container_center slds-p-around_large">
+    <article class="slds-card slds-card_boundary">
+        <div class="slds-card__header">
+            <header class="slds-media">
+                <div class="slds-media__body">
+                    <h1 class="slds-card__header-title">
+                        <span class="slds-text-heading_large">{{ .Title }}</span>
+                    </h1>
+                    {{- if .Params.description }}
+                    <p class="slds-text-body_regular slds-m-top_small slds-text-color_weak">{{ .Params.description }}</p>
+                    {{- end }}
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            {{- if not (.Param "hideMeta") }}
+            <div class="slds-media slds-media_center slds-m-bottom_medium slds-p-bottom_medium slds-border_bottom">
+                <div class="slds-media__body">
+                    <ul class="slds-list_horizontal slds-has-dividers_right slds-list_dotted">
+                        <li class="slds-item">
+                            <span class="slds-text-body_small slds-text-color_weak">
+                                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format site.Params.DateFormat | default "January 2, 2006" }}</time>
+                            </span>
+                        </li>
+                        {{- if site.Params.ShowReadingTime }}
+                        <li class="slds-item">
+                            <span class="slds-text-body_small slds-text-color_weak">{{ .ReadingTime }} min read</span>
+                        </li>
+                        {{- end }}
+                        {{- if .Params.author }}
+                        <li class="slds-item">
+                            <span class="slds-text-body_small slds-text-color_weak">By {{ .Params.author }}</span>
+                        </li>
+                        {{- end }}
+                    </ul>
+                </div>
+            </div>
+            {{- end }}
+
+            {{- if .Params.tags }}
+            <div class="slds-m-bottom_large">
+                {{- range .Params.tags }}
+                <span class="slds-badge slds-badge_lightest slds-m-right_xx-small slds-m-bottom_xx-small">{{ . }}</span>
+                {{- end }}
+            </div>
+            {{- end }}
+
+            <div class="slds-text-longform slds-rich-text-editor-output">
+                {{ .Content }}
+            </div>
+
+            {{- if site.Params.ShowShareButtons }}
+            <div class="slds-m-top_x-large slds-p-top_large slds-border_top">
+                <div class="slds-grid slds-gutters slds-grid_align-space-between">
+                    <div class="slds-col slds-size_1-of-2">
+                        <h3 class="slds-text-heading_small slds-m-bottom_small">Share this post</h3>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-text-align_right">
+                        <div class="slds-button-group" role="group">
+                            <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}" 
+                               class="slds-button slds-button_brand" target="_blank" rel="noopener">
+                                Twitter
+                            </a>
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}" 
+                               class="slds-button slds-button_brand" target="_blank" rel="noopener">
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{- end }}
+        </div>
+    </article>
+
+    {{- if site.Params.ShowPostNavLinks }}
+    <nav class="slds-grid slds-gutters slds-m-top_x-large" role="navigation" aria-label="Post navigation">
+        {{- with .PrevInSection }}
+        <div class="slds-col slds-size_1-of-2">
+            <a href="{{ .Permalink }}" class="slds-card slds-card_boundary post-nav-card">
+                <div class="slds-card__body slds-card__body_inner">
+                    <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_xx-small">← Previous Post</p>
+                    <p class="slds-text-heading_small">{{ .Title }}</p>
+                </div>
+            </a>
+        </div>
+        {{- end }}
+        {{- with .NextInSection }}
+        <div class="slds-col slds-size_1-of-2{{ if not .PrevInSection }} slds-col_bump-left{{ end }}">
+            <a href="{{ .Permalink }}" class="slds-card slds-card_boundary post-nav-card">
+                <div class="slds-card__body slds-card__body_inner slds-text-align_right">
+                    <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_xx-small">Next Post →</p>
+                    <p class="slds-text-heading_small">{{ .Title }}</p>
+                </div>
+            </a>
+        </div>
+        {{- end }}
+    </nav>
+    {{- end }}
+</div>
+{{ end }}
+

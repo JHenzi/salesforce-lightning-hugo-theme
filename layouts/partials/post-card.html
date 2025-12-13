@@ -1,0 +1,53 @@
+<article class="slds-card slds-card_boundary post-card">
+    <div class="slds-card__header">
+        <header class="slds-media">
+            <div class="slds-media__figure">
+                <div class="slds-icon_container slds-icon-standard-article" title="Article">
+                    <span class="slds-icon-placeholder">📄</span>
+                    <span class="slds-assistive-text">Article</span>
+                </div>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-card__header-title">
+                    <a href="{{ .Permalink }}" class="slds-card__header-link">
+                        <span class="slds-text-heading_small slds-text-color_default">{{ .Title }}</span>
+                    </a>
+                </h2>
+            </div>
+        </header>
+    </div>
+    <div class="slds-card__body slds-card__body_inner">
+        {{- if .Summary }}
+        <div class="slds-text-longform slds-m-bottom_medium">
+            <p class="slds-text-body_regular slds-text-color_default">{{ .Summary | truncate 200 }}</p>
+        </div>
+        {{- end }}
+        <div class="slds-m-top_medium slds-m-bottom_medium slds-border_top">
+            <ul class="slds-list_horizontal slds-has-dividers_right slds-list_dotted slds-m-top_small">
+                <li class="slds-item">
+                    <span class="slds-text-body_small slds-text-color_weak">
+                        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format site.Params.DateFormat | default "January 2, 2006" }}</time>
+                    </span>
+                </li>
+                {{- if site.Params.ShowReadingTime }}
+                <li class="slds-item">
+                    <span class="slds-text-body_small slds-text-color_weak">{{ .ReadingTime }} min read</span>
+                </li>
+                {{- end }}
+            </ul>
+        </div>
+        {{- if .Params.tags }}
+        <div class="slds-m-top_small">
+            {{- range first 3 .Params.tags }}
+            <span class="slds-badge slds-badge_lightest slds-m-right_xx-small slds-m-bottom_xx-small">{{ . }}</span>
+            {{- end }}
+        </div>
+        {{- end }}
+    </div>
+    <div class="slds-card__footer">
+        <a href="{{ .Permalink }}" class="slds-button slds-button_brand slds-button_stretch">
+            Read More
+        </a>
+    </div>
+</article>
+

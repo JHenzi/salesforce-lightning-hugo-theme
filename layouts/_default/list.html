@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="slds-container_large slds-container_center slds-p-around_large">
+    <div class="slds-page-header slds-m-bottom_large">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__body">
+                        <h1 class="slds-page-header__title slds-truncate">
+                            <span class="slds-text-heading_medium">{{ .Title }}</span>
+                        </h1>
+                        {{- if .Description }}
+                        <p class="slds-page-header__meta-text slds-text-body_regular slds-m-top_x-small">{{ .Description }}</p>
+                        {{- end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-wrap slds-gutters posts-grid">
+        {{- range .Paginator.Pages }}
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+            {{- partial "post-card.html" . }}
+        </div>
+        {{- end }}
+    </div>
+
+    {{- if gt .Paginator.TotalPages 1 }}
+    <nav class="slds-p-around_medium" role="navigation" aria-label="Pagination">
+        <div class="slds-button-group" role="group">
+            {{- if .Paginator.HasPrev }}
+            <a href="{{ .Paginator.Prev.URL }}" class="slds-button slds-button_neutral">
+                ← Previous
+            </a>
+            {{- end }}
+            {{- if .Paginator.HasNext }}
+            <a href="{{ .Paginator.Next.URL }}" class="slds-button slds-button_neutral">
+                Next →
+            </a>
+            {{- end }}
+        </div>
+    </nav>
+    {{- end }}
+</div>
+{{ end }}
+

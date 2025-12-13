@@ -1,0 +1,6 @@
+{{- $author := site.Params.author -}}
+{{- if .Params.author -}}
+    {{- $author = .Params.author -}}
+{{- end -}}
+{{- return $author -}}
+
