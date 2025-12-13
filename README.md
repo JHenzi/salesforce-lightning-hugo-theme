@@ -4,6 +4,12 @@ A Hugo theme based on the [Salesforce Lightning Design System](https://www.light
 
 ![Theme Preview](Screenshot.png)
 
+## Performance
+
+This theme is optimized for performance and scores **97 out of 100** on [Google PageSpeed Insights](https://pagespeed.web.dev/).
+
+![PageSpeed Score](Pagespeed.png)
+
 ## Features
 
 - 🎨 Built with Salesforce Lightning Design System (SLDS) components
