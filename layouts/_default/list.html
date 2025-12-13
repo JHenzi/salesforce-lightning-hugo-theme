@@ -29,13 +29,13 @@
     <nav class="slds-p-around_medium" role="navigation" aria-label="Pagination">
         <div class="slds-button-group" role="group">
             {{- if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" class="slds-button slds-button_neutral">
-                ← Previous
+            <a href="{{ .Paginator.Prev.URL }}" class="slds-button slds-button_neutral" aria-label="Go to previous page of {{ .Type }}">
+                ← Previous Page
             </a>
             {{- end }}
             {{- if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" class="slds-button slds-button_neutral">
-                Next →
+            <a href="{{ .Paginator.Next.URL }}" class="slds-button slds-button_neutral" aria-label="Go to next page of {{ .Type }}">
+                Next Page →
             </a>
             {{- end }}
         </div>

@@ -59,12 +59,12 @@
                     <div class="slds-col slds-size_1-of-2 slds-text-align_right">
                         <div class="slds-button-group" role="group">
                             <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}" 
-                               class="slds-button slds-button_brand" target="_blank" rel="noopener">
-                                Twitter
+                               class="slds-button slds-button_brand" target="_blank" rel="noopener" aria-label="Share {{ .Title }} on Twitter">
+                                Share on Twitter
                             </a>
                             <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}" 
-                               class="slds-button slds-button_brand" target="_blank" rel="noopener">
-                                LinkedIn
+                               class="slds-button slds-button_brand" target="_blank" rel="noopener" aria-label="Share {{ .Title }} on LinkedIn">
+                                Share on LinkedIn
                             </a>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
     <nav class="slds-grid slds-gutters slds-m-top_x-large" role="navigation" aria-label="Post navigation">
         {{- with .PrevInSection }}
         <div class="slds-col slds-size_1-of-2">
-            <a href="{{ .Permalink }}" class="slds-card slds-card_boundary post-nav-card">
+            <a href="{{ .Permalink }}" class="slds-card slds-card_boundary post-nav-card" aria-label="Read previous post: {{ .Title }}">
                 <div class="slds-card__body slds-card__body_inner">
                     <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_xx-small">← Previous Post</p>
                     <p class="slds-text-heading_small">{{ .Title }}</p>
@@ -88,7 +88,7 @@
         {{- end }}
         {{- with .NextInSection }}
         <div class="slds-col slds-size_1-of-2{{ if not .PrevInSection }} slds-col_bump-left{{ end }}">
-            <a href="{{ .Permalink }}" class="slds-card slds-card_boundary post-nav-card">
+            <a href="{{ .Permalink }}" class="slds-card slds-card_boundary post-nav-card" aria-label="Read next post: {{ .Title }}">
                 <div class="slds-card__body slds-card__body_inner slds-text-align_right">
                     <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_xx-small">Next Post →</p>
                     <p class="slds-text-heading_small">{{ .Title }}</p>

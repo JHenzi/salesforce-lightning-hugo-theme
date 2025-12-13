@@ -28,10 +28,11 @@
 {{- /* Salesforce Lightning Design System CSS */}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.20.0/assets/styles/salesforce-lightning-design-system.min.css" crossorigin="anonymous">
 
-{{- /* Custom CSS */}}
+{{- /* Custom CSS - loaded after SLDS to ensure overrides take precedence */}}
 {{- $customCSS := resources.Get "css/custom.css" }}
 {{- if $customCSS }}
-<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
+{{- $customCSS = $customCSS | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}" crossorigin="anonymous">
 {{- end }}
 
 {{- /* Favicons */}}
@@ -56,4 +57,46 @@
 {{- end -}}
 
 {{- partial "extend_head.html" . -}}
+
+{{- /* Inline critical overrides to ensure they load after external CSS */}}
+<style>
+/* Force override of SLDS page header title styles */
+.slds-page-header.site-header .slds-page-header__title.slds-truncate,
+.slds-page-header.site-header .slds-page-header__title-wrapper .slds-page-header__title-link .slds-page-header__title.slds-truncate,
+.slds-page-header.site-header .slds-page-header__name-title .slds-page-header__title-wrapper .slds-page-header__title-link .slds-page-header__title.slds-truncate,
+.slds-page-header.site-header .slds-media .slds-media__body .slds-page-header__name .slds-page-header__name-title .slds-page-header__title-wrapper .slds-page-header__title-link .slds-page-header__title.slds-truncate,
+header.slds-page-header.site-header .slds-page-header__row .slds-page-header__col-title .slds-media .slds-media__body .slds-page-header__name .slds-page-header__name-title .slds-page-header__title-wrapper .slds-page-header__title-link span.slds-page-header__title.slds-truncate,
+.site-header span.slds-page-header__title,
+.site-header .slds-page-header__title.slds-truncate {
+    font-size: 2.1375rem !important;
+    font-weight: 400 !important;
+    line-height: 1.25 !important;
+    color: #080707 !important;
+    display: block !important;
+}
+
+/* Force override of button sizes */
+.slds-page-header.site-header .slds-page-header__control-group .slds-page-header__control .slds-button,
+.slds-page-header.site-header .slds-button {
+    width: 100% !important;
+    padding: 0.5rem 1rem !important;
+    min-height: auto !important;
+    height: auto !important;
+}
+
+/* Ensure control group is horizontal */
+.slds-page-header.site-header .slds-page-header__control-group {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+}
+
+/* Title case for button labels */
+.slds-page-header.site-header .slds-button .slds-button__label,
+.site-header .slds-button .slds-button__label {
+    text-transform: capitalize !important;
+}
+</style>
 

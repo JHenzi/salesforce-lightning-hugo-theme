@@ -46,13 +46,13 @@
     <nav class="slds-p-around_medium" role="navigation" aria-label="Pagination">
         <div class="slds-button-group" role="group">
             {{- if $paginator.HasPrev }}
-            <a href="{{ $paginator.Prev.URL }}" class="slds-button slds-button_neutral">
-                ← Previous
+            <a href="{{ $paginator.Prev.URL }}" class="slds-button slds-button_neutral" aria-label="Go to previous page of posts">
+                ← Previous Page
             </a>
             {{- end }}
             {{- if $paginator.HasNext }}
-            <a href="{{ $paginator.Next.URL }}" class="slds-button slds-button_neutral">
-                Next →
+            <a href="{{ $paginator.Next.URL }}" class="slds-button slds-button_neutral" aria-label="Go to next page of posts">
+                Next Page →
             </a>
             {{- end }}
         </div>
