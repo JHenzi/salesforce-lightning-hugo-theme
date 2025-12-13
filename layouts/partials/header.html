@@ -5,13 +5,14 @@
                 <div class="slds-media__figure">
                     {{- $profileImg := resources.Get "profile.png" }}
                     {{- if $profileImg }}
+                    {{- $resizedProfile := $profileImg.Resize "82x82" }}
                     <a href="{{ "" | absLangURL }}" class="slds-avatar slds-avatar_large" title="{{ site.Title }}">
-                        <img src="{{ $profileImg.Permalink }}" alt="{{ site.Title }}" />
+                        <img src="{{ $resizedProfile.Permalink }}" alt="{{ site.Title }}" width="82" height="82" />
                     </a>
                     {{- else }}
                     {{- $profileImgStatic := "/profile.png" }}
                     <a href="{{ "" | absLangURL }}" class="slds-avatar slds-avatar_large" title="{{ site.Title }}">
-                        <img src="{{ $profileImgStatic | absURL }}" alt="{{ site.Title }}" />
+                        <img src="{{ $profileImgStatic | absURL }}" alt="{{ site.Title }}" width="82" height="82" />
                     </a>
                     {{- end }}
                 </div>
