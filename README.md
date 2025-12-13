@@ -6,11 +6,10 @@ A Hugo theme based on the [Salesforce Lightning Design System](https://www.light
 
 ## Performance
 
-This theme is optimized for performance and scores **97 out of 100** on [Google PageSpeed Insights](https://pagespeed.web.dev/).
+This theme is optimized for performance and scores **98 out of 100** on [Google PageSpeed Insights](https://pagespeed.web.dev/).
 
 ![PageSpeed Score](Pagespeed.png)
 
-**Note:** This screenshot is out of date - we now score 100 on all except performance due to updates that make links descriptive (we are 100/100 on SEO).
 
 ## Features
 
