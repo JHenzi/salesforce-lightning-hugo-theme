@@ -539,6 +539,19 @@ header.slds-page-header.site-header .slds-page-header__row .slds-page-header__co
     height: auto !important;
 }
 
+/* Footer link styling */
+footer .slds-text-link {
+    color: #0070d2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer .slds-text-link:hover,
+footer .slds-text-link:focus {
+    color: #005fb2;
+    text-decoration: underline;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .site-header .slds-page-header__row {

@@ -10,6 +10,8 @@ This theme is optimized for performance and scores **97 out of 100** on [Google 
 
 ![PageSpeed Score](Pagespeed.png)
 
+**Note:** This screenshot is out of date - we now score 100 on all except performance due to updates that make links descriptive (we are 100/100 on SEO).
+
 ## Features
 
 - 🎨 Built with Salesforce Lightning Design System (SLDS) components
