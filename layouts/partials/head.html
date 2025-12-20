@@ -29,14 +29,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.20.0/assets/styles/salesforce-lightning-design-system.min.css" crossorigin="anonymous">
 
 {{- /* Custom CSS - loaded after SLDS to ensure overrides take precedence */}}
-{{- $customCSS := resources.Get "css/custom.css" }}
-{{- if $customCSS }}
-{{- $customCSS = $customCSS | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}" crossorigin="anonymous">
-{{- else }}
-{{- /* Fallback: load directly from static folder */}}
-<link rel="stylesheet" href="{{ "/css/custom.css" | relURL }}">
-{{- end }}
+{{- /* Load from theme static folder */}}
+<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
 
 {{- /* Favicons */}}
 <link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
