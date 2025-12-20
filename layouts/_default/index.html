@@ -36,7 +36,7 @@
     <div class="slds-grid slds-wrap slds-gutters posts-grid">
         {{- $paginator := .Paginate (where site.RegularPages "Type" "in" site.Params.mainSections) 9 }}
         {{- range $paginator.Pages }}
-        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-flex">
             {{- partial "post-card.html" . }}
         </div>
         {{- end }}

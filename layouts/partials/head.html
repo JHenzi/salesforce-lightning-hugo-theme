@@ -28,9 +28,17 @@
 {{- /* Salesforce Lightning Design System CSS */}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@salesforce-ux/design-system@2.20.0/assets/styles/salesforce-lightning-design-system.min.css" crossorigin="anonymous">
 
-{{- /* Custom CSS - loaded after SLDS to ensure overrides take precedence */}}
-{{- /* Load from theme static folder */}}
+{{- /* Custom CSS - inlined for performance */}}
+{{- $customCSSFile := printf "themes/%s/static/css/custom.css" (site.Params.theme | default "salesforce-lighting") }}
+{{- if fileExists $customCSSFile }}
+{{- $customCSS := readFile $customCSSFile }}
+<style>
+{{ $customCSS | safeCSS }}
+</style>
+{{- else }}
+{{- /* Fallback to external file if inline fails */}}
 <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+{{- end }}
 
 {{- /* Favicons */}}
 <link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">

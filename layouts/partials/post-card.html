@@ -1,4 +1,4 @@
-<article class="slds-card slds-card_boundary post-card">
+<article class="slds-card slds-card_boundary post-card slds-grid slds-grid_vertical slds-has-flexi-truncate">
     <div class="slds-card__header">
         <header class="slds-media">
             <div class="slds-media__figure">
@@ -16,7 +16,7 @@
             </div>
         </header>
     </div>
-    <div class="slds-card__body slds-card__body_inner">
+    <div class="slds-card__body slds-card__body_inner slds-grow">
         {{- if .Summary }}
         <div class="slds-text-longform slds-m-bottom_medium">
             <p class="slds-text-body_regular slds-text-color_default">{{ .Summary | truncate 200 }}</p>

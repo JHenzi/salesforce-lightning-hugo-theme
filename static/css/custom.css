@@ -46,40 +46,15 @@
     line-height: 1.25;
 }
 
-.site-header .slds-page-header__title {
+/* Site header title - simplified selector */
+.site-header .slds-page-header__title,
+.site-header .slds-page-header__title.slds-truncate,
+.slds-page-header.site-header .slds-page-header__title {
     font-size: 2.1375rem !important;
     font-weight: 400 !important;
     line-height: 1.25 !important;
     color: #080707 !important;
     display: block !important;
-}
-
-/* Higher specificity override for title to ensure it takes precedence */
-.slds-page-header.site-header .slds-page-header__title-wrapper .slds-page-header__title-link .slds-page-header__title {
-    font-size: 2.1375rem !important;
-    font-weight: 400 !important;
-    line-height: 1.25 !important;
-    color: #080707 !important;
-}
-
-/* Even more specific - target the span with both classes */
-.slds-page-header.site-header .slds-page-header__title-wrapper .slds-page-header__title-link .slds-page-header__title.slds-truncate,
-.slds-page-header.site-header .slds-page-header__name-title .slds-page-header__title-wrapper .slds-page-header__title-link .slds-page-header__title.slds-truncate,
-.slds-page-header.site-header .slds-media .slds-media__body .slds-page-header__name .slds-page-header__name-title .slds-page-header__title-wrapper .slds-page-header__title-link .slds-page-header__title.slds-truncate {
-    font-size: 2.1375rem !important;
-    font-weight: 400 !important;
-    line-height: 1.25 !important;
-    color: #080707 !important;
-    display: block !important;
-}
-
-/* Target any span with slds-page-header__title in site-header */
-.site-header span.slds-page-header__title,
-.site-header .slds-page-header__title.slds-truncate {
-    font-size: 2.1375rem !important;
-    font-weight: 400 !important;
-    line-height: 1.25 !important;
-    color: #080707 !important;
 }
 
 .site-header .slds-page-header__name-meta {
@@ -175,31 +150,26 @@
     height: auto !important;
 }
 
-/* Title case for button labels */
-.site-header .slds-button .slds-button__label {
-    text-transform: capitalize !important;
-}
-
-/* Higher specificity override for buttons */
-.slds-page-header.site-header .slds-page-header__control-group .slds-page-header__control .slds-button {
+/* Site header buttons - consolidated */
+.site-header .slds-button,
+.slds-page-header.site-header .slds-button {
     width: 100% !important;
     padding: 0.5rem 1rem !important;
     min-height: auto !important;
     height: auto !important;
 }
 
-/* Ensure control group stays horizontal on desktop */
+.site-header .slds-button .slds-button__label {
+    text-transform: capitalize !important;
+}
+
+/* Control group - horizontal layout */
 .slds-page-header.site-header .slds-page-header__control-group {
     display: flex !important;
     flex-direction: row !important;
     gap: 0.5rem !important;
     align-items: center !important;
-}
-
-/* Title case for all button labels */
-.slds-page-header.site-header .slds-button .slds-button__label,
-.site-header .slds-page-header__control-group .slds-button .slds-button__label {
-    text-transform: capitalize !important;
+    flex-wrap: nowrap !important;
 }
 
 .site-header .slds-button.slds-is-selected {
@@ -255,8 +225,7 @@
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
     margin-bottom: 0;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    height: 100%; /* Ensure card fills column height */
 }
 
 .post-card .slds-card__header {
@@ -266,7 +235,6 @@
 }
 
 .post-card .slds-card__body {
-    flex: 1;
     padding: 0 1.75rem;
     background-color: #ffffff;
 }
@@ -274,6 +242,7 @@
 .post-card .slds-card__body_inner {
     padding-top: 0;
     padding-bottom: 0;
+    /* slds-grow class handles flex expansion */
 }
 
 .post-card .slds-card__footer {
@@ -440,12 +409,13 @@
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
 }
 
+/* Card boundary padding - can be overridden by more specific selectors */
 .slds-card_boundary .slds-card__header {
     padding: 1.5rem 2rem;
 }
 
 .slds-card_boundary .slds-card__body {
-    padding: 2rem;
+    padding: 1.5rem 2rem;
 }
 
 /* Button improvements */
@@ -477,15 +447,7 @@
     color: #0070d2;
 }
 
-/* Single post card improvements */
-.slds-card_boundary .slds-card__header {
-    border-bottom: 1px solid #dddbda;
-    padding: 1.5rem;
-}
-
-.slds-card_boundary .slds-card__body {
-    padding: 1.5rem;
-}
+/* Removed duplicate - card_boundary styles already defined above */
 
 /* Improved spacing for content */
 .slds-rich-text-editor-output {
@@ -518,36 +480,10 @@
 .posts-grid .slds-col .post-card {
     width: 100%;
     margin-bottom: 0;
-    flex: 0 0 auto;
+    flex: 1 1 auto; /* Allow card to grow to fill column height */
 }
 
-/* Force override of SLDS styles - ensure our custom styles take precedence */
-.slds-page-header.site-header .slds-page-header__title {
-    font-size: 2.1375rem !important;
-}
-
-.slds-page-header.site-header .slds-page-header__title.slds-truncate {
-    font-size: 2.1375rem !important;
-    font-weight: 400 !important;
-    line-height: 1.25 !important;
-    color: #080707 !important;
-}
-
-/* Maximum specificity override for the title span */
-header.slds-page-header.site-header .slds-page-header__row .slds-page-header__col-title .slds-media .slds-media__body .slds-page-header__name .slds-page-header__name-title .slds-page-header__title-wrapper .slds-page-header__title-link span.slds-page-header__title.slds-truncate {
-    font-size: 2.1375rem !important;
-    font-weight: 400 !important;
-    line-height: 1.25 !important;
-    color: #080707 !important;
-    display: block !important;
-}
-
-.slds-page-header.site-header .slds-button {
-    width: 100% !important;
-    padding: 0.5rem 1rem !important;
-    min-height: auto !important;
-    height: auto !important;
-}
+/* Removed duplicate styles - consolidated above */
 
 /* Footer link styling */
 footer .slds-text-link {
