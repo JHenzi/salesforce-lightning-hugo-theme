@@ -267,8 +267,13 @@
 
 .post-card .slds-card__body {
     flex: 1;
-    padding: 1.75rem;
+    padding: 0 1.75rem;
     background-color: #ffffff;
+}
+
+.post-card .slds-card__body_inner {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .post-card .slds-card__footer {

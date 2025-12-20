@@ -10,6 +10,10 @@
                         </h1>
                         {{- if .Description }}
                         <p class="slds-page-header__meta-text slds-text-body_regular slds-m-top_x-small">{{ .Description }}</p>
+                        {{- else }}
+                        <p class="slds-page-header__meta-text slds-text-body_regular slds-m-top_x-small">
+                            {{ len .Pages }} {{ if eq (len .Pages) 1 }}article{{ else }}articles{{ end }}
+                        </p>
                         {{- end }}
                     </div>
                 </div>
@@ -17,30 +21,39 @@
         </div>
     </div>
 
-    <div class="slds-grid slds-wrap slds-gutters posts-grid">
-        {{- range .Paginator.Pages }}
-        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
-            {{- partial "post-card.html" . }}
+    {{- /* SLDS Data Table */}}
+    <div class="slds-card slds-card_boundary">
+        <div class="slds-card__body slds-card__body_inner">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered" role="grid">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col" class="slds-text-title_caps">
+                            <div class="slds-truncate" title="{{ .Title }}">{{ .Title }}</div>
+                        </th>
+                        <th scope="col" class="slds-text-title_caps">
+                            <div class="slds-truncate" title="Last Published Date">Last Published Date</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{- range .Pages }}
+                    <tr class="slds-hint-parent">
+                        <th scope="row" data-label="{{ $.Title }}">
+                            <div class="slds-truncate">
+                                <a href="{{ .Permalink }}" class="slds-text-link">{{ .Title }}</a>
+                            </div>
+                        </th>
+                        <td data-label="Last Published Date">
+                            <div class="slds-truncate">
+                                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format site.Params.DateFormat | default "January 2, 2006" }}</time>
+                            </div>
+                        </td>
+                    </tr>
+                    {{- end }}
+                </tbody>
+            </table>
         </div>
-        {{- end }}
     </div>
-
-    {{- if gt .Paginator.TotalPages 1 }}
-    <nav class="slds-p-around_medium" role="navigation" aria-label="Pagination">
-        <div class="slds-button-group" role="group">
-            {{- if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" class="slds-button slds-button_neutral" aria-label="Go to previous page of {{ .Type }}">
-                ← Previous Page
-            </a>
-            {{- end }}
-            {{- if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" class="slds-button slds-button_neutral" aria-label="Go to next page of {{ .Type }}">
-                Next Page →
-            </a>
-            {{- end }}
-        </div>
-    </nav>
-    {{- end }}
 </div>
 {{ end }}
 
