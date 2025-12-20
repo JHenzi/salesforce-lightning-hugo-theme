@@ -384,6 +384,11 @@
     font-size: 0.75rem;
     text-transform: none;
     letter-spacing: normal;
+    max-width: 20ch; /* Approximately 20 characters */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
 }
 
 /* Page header improvements */
@@ -550,6 +555,28 @@ footer .slds-text-link:hover,
 footer .slds-text-link:focus {
     color: #005fb2;
     text-decoration: underline;
+}
+
+/* Ensure SLDS text-body_large applies to all child elements in article body text on desktop */
+@media (min-width: 769px) {
+    /* Target the card body inner and ensure text-body_large font-size applies */
+    .slds-container_large > article.slds-card.slds-card_boundary .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large,
+    .slds-container_large > article.slds-card.slds-card_boundary .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large p,
+    .slds-container_large > article.slds-card.slds-card_boundary .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large li,
+    .slds-container_large > article.slds-card.slds-card_boundary .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large td,
+    .slds-container_large > article.slds-card.slds-card_boundary .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large th,
+    .slds-container_large > article.slds-card.slds-card_boundary .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large div:not(pre):not(code) {
+        /* Ensure SLDS text-body_large font-size is applied - typically 1.125rem */
+        font-size: 1.125rem !important;
+        line-height: 1.75 !important;
+    }
+    
+    /* Exclude landing page - keep regular size for home info */
+    .slds-container_large:has(.posts-grid) > article.slds-card.slds-card_boundary:first-child .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large,
+    .slds-container_large:has(.posts-grid) > article.slds-card.slds-card_boundary:first-child .slds-card__body.slds-card__body_inner .slds-text-longform.slds-text-body_large * {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
 }
 
 /* Responsive adjustments */

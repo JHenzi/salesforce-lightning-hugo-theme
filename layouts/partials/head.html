@@ -33,6 +33,9 @@
 {{- if $customCSS }}
 {{- $customCSS = $customCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}" crossorigin="anonymous">
+{{- else }}
+{{- /* Fallback: load directly from static folder */}}
+<link rel="stylesheet" href="{{ "/css/custom.css" | relURL }}">
 {{- end }}
 
 {{- /* Favicons */}}
@@ -57,6 +60,10 @@
 {{- end -}}
 
 {{- partial "extend_head.html" . -}}
+
+{{- /* Google AdSense */}}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0726545171592960"
+     crossorigin="anonymous"></script>
 
 {{- /* Inline critical overrides to ensure they load after external CSS */}}
 <style>
