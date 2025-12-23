@@ -299,7 +299,7 @@
     color: #16325c;
 }
 
-/* Make H2 headings BIG in rich text editor output */
+/* Make headings BIG in rich text editor output */
 .slds-rich-text-editor-output h2 {
     font-size: 2rem !important;
     line-height: 2.5rem !important;
@@ -308,7 +308,39 @@
     margin-bottom: 1rem !important;
 }
 
-/* Post content heading styles - make H2 headings BIG */
+.slds-rich-text-editor-output h3 {
+    font-size: 1.75rem !important;
+    line-height: 2.25rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.75rem !important;
+    margin-bottom: 0.875rem !important;
+}
+
+.slds-rich-text-editor-output h4 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.slds-rich-text-editor-output h5 {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.625rem !important;
+}
+
+.slds-rich-text-editor-output h6 {
+    font-size: 1.125rem !important;
+    line-height: 1.625rem !important;
+    font-weight: 700 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Post content heading styles - make all headings BIG */
 .slds-text-longform h2,
 .slds-text-longform.slds-text-body_large h2,
 article .slds-text-longform h2,
@@ -318,6 +350,54 @@ article .slds-text-longform.slds-text-body_large h2 {
     font-weight: 700 !important;
     margin-top: 2rem !important;
     margin-bottom: 1rem !important;
+    color: #16325c !important;
+}
+
+.slds-text-longform h3,
+.slds-text-longform.slds-text-body_large h3,
+article .slds-text-longform h3,
+article .slds-text-longform.slds-text-body_large h3 {
+    font-size: 1.75rem !important;
+    line-height: 2.25rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.75rem !important;
+    margin-bottom: 0.875rem !important;
+    color: #16325c !important;
+}
+
+.slds-text-longform h4,
+.slds-text-longform.slds-text-body_large h4,
+article .slds-text-longform h4,
+article .slds-text-longform.slds-text-body_large h4 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    color: #16325c !important;
+}
+
+.slds-text-longform h5,
+.slds-text-longform.slds-text-body_large h5,
+article .slds-text-longform h5,
+article .slds-text-longform.slds-text-body_large h5 {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+    font-weight: 700 !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.625rem !important;
+    color: #16325c !important;
+}
+
+.slds-text-longform h6,
+.slds-text-longform.slds-text-body_large h6,
+article .slds-text-longform h6,
+article .slds-text-longform.slds-text-body_large h6 {
+    font-size: 1.125rem !important;
+    line-height: 1.625rem !important;
+    font-weight: 700 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
     color: #16325c !important;
 }
 
