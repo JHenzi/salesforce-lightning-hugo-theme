@@ -299,6 +299,28 @@
     color: #16325c;
 }
 
+/* Make H2 headings BIG in rich text editor output */
+.slds-rich-text-editor-output h2 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+    font-weight: 700 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Post content heading styles - make H2 headings BIG */
+.slds-text-longform h2,
+.slds-text-longform.slds-text-body_large h2,
+article .slds-text-longform h2,
+article .slds-text-longform.slds-text-body_large h2 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+    font-weight: 700 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+    color: #16325c !important;
+}
+
 .slds-rich-text-editor-output p {
     margin-bottom: 1rem;
     line-height: 1.6;
