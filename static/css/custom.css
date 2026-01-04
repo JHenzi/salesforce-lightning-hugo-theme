@@ -467,6 +467,30 @@ article .slds-text-longform.slds-text-body_large h6 {
     color: #16325c !important;
 }
 
+/* Code blocks with black background - apply to all pre elements in content */
+.slds-text-longform pre,
+.slds-text-longform.slds-text-body_large pre,
+article .slds-text-longform pre,
+article .slds-text-longform.slds-text-body_large pre {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+    padding: 1rem !important;
+    border-radius: 0.25rem !important;
+    overflow-x: auto !important;
+    margin: 1rem 0 !important;
+    border: 1px solid #3e3e3e !important;
+}
+
+.slds-text-longform pre code,
+.slds-text-longform.slds-text-body_large pre code,
+article .slds-text-longform pre code,
+article .slds-text-longform.slds-text-body_large pre code {
+    background-color: transparent !important;
+    color: #d4d4d4 !important;
+    padding: 0 !important;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace !important;
+}
+
 .slds-rich-text-editor-output p {
     margin-bottom: 1rem;
     line-height: 1.6;
@@ -481,16 +505,20 @@ article .slds-text-longform.slds-text-body_large h6 {
 }
 
 .slds-rich-text-editor-output pre {
-    background-color: #f3f2f2;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
     padding: 1rem;
     border-radius: 0.25rem;
     overflow-x: auto;
     margin: 1rem 0;
+    border: 1px solid #3e3e3e;
 }
 
 .slds-rich-text-editor-output pre code {
     background-color: transparent;
+    color: #d4d4d4;
     padding: 0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
 }
 
 .slds-rich-text-editor-output ul,
