@@ -1,0 +1,16 @@
+{
+    "items": [
+    {{- $pages := $.Site.RegularPages -}}
+    {{- $cnt := 0 -}}
+    {{- range $pages -}}
+    {{- $cnt = add $cnt 1 -}}
+    {
+        "url": "{{ .Permalink }}",
+        "title": {{ .Title | jsonify }},
+        "content": {{ .Content | plainify | jsonify }},
+        "date": "{{ .Date.Format "2006-01-02" }}"
+    }{{- if ne $cnt (len $pages) -}},{{- end -}}
+    {{- end -}}
+    ]
+}
+

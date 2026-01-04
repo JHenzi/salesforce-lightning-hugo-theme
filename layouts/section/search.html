@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="slds-container_large slds-container_center slds-p-around_large">
+    {{- partial "breadcrumbs.html" . }}
+    <article class="slds-card slds-card_boundary">
+        <div class="slds-card__header">
+            <header class="slds-media">
+                <div class="slds-media__body">
+                    <h1 class="slds-card__header-title">
+                        <span class="slds-text-heading_large">{{ .Title }}</span>
+                    </h1>
+                    {{- if .Params.description }}
+                    <p class="slds-text-body_regular slds-m-top_small slds-text-color_weak slds-m-bottom_none">{{ .Params.description }}</p>
+                    {{- end }}
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-form-element slds-m-bottom_medium">
+                <label class="slds-form-element__label" for="search-input">
+                    <span class="slds-form-element__label-text">Search Posts</span>
+                </label>
+                <div class="slds-form-element__control">
+                    <input type="text" 
+                           id="search-input" 
+                           class="slds-input" 
+                           placeholder="Type to search..." 
+                           oninput="showSearchResults()" 
+                           aria-label="Search blog posts" />
+                </div>
+            </div>
+            <div id="search-results" class="slds-m-top_medium">
+                <ul id="list" class="slds-list_dotted"></ul>
+            </div>
+        </div>
+    </article>
+</div>
+{{ end }}
+

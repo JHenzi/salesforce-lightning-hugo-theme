@@ -9,9 +9,10 @@
 </script>
 {{- end }}
 
-{{- /* Search functionality */}}
-{{- if (eq .Layout `search`) -}}
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.basic.min.js"></script>
+{{- /* Search functionality with Lunr.js */}}
+{{- if (eq .Section `search`) -}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+<script src="{{ "js/search.js" | relURL }}"></script>
 {{- end -}}
 
 {{- /* Custom JS */}}

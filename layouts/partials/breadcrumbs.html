@@ -1,0 +1,32 @@
+{{- if ne .RelPermalink "/" }}
+<nav class="slds-breadcrumb slds-m-bottom_small" role="navigation" aria-label="Breadcrumbs">
+    <ol class="slds-breadcrumb__list">
+        <li class="slds-breadcrumb__item">
+            <a href="{{ "/" | relLangURL }}" class="slds-breadcrumb__link">Home</a>
+        </li>
+        {{- if .Section }}
+        {{- $section := .Site.GetPage "section" .Section }}
+        {{- if and $section (ne $section.RelPermalink "/") }}
+        <li class="slds-breadcrumb__item">
+            <span class="slds-breadcrumb__divider" aria-hidden="true">›</span>
+            <a href="{{ $section.RelPermalink }}" class="slds-breadcrumb__link">{{ $section.Title }}</a>
+        </li>
+        {{- end }}
+        {{- end }}
+        {{- if eq .Kind "term" }}
+        {{- $taxonomy := index .Site.Taxonomies (.Data.Plural) }}
+        {{- if $taxonomy }}
+        <li class="slds-breadcrumb__item">
+            <span class="slds-breadcrumb__divider" aria-hidden="true">›</span>
+            <a href="{{ "/" | relLangURL }}{{ .Data.Plural }}/" class="slds-breadcrumb__link">{{ .Data.Plural | humanize | title }}</a>
+        </li>
+        {{- end }}
+        {{- end }}
+        <li class="slds-breadcrumb__item">
+            <span class="slds-breadcrumb__divider" aria-hidden="true">›</span>
+            <span class="slds-breadcrumb__link slds-breadcrumb__link_current" aria-current="page">{{ .Title }}</span>
+        </li>
+    </ol>
+</nav>
+{{- end }}
+
