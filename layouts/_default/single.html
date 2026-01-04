@@ -8,14 +8,43 @@
                         <span class="slds-text-heading_large">{{ .Title }}</span>
                     </h1>
                     {{- if .Params.description }}
-                    <p class="slds-text-body_regular slds-m-top_small slds-text-color_weak">{{ .Params.description }}</p>
+                    <p class="slds-text-body_regular slds-m-top_small slds-text-color_weak slds-m-bottom_none">{{ .Params.description }}</p>
                     {{- end }}
                 </div>
             </header>
         </div>
         <div class="slds-card__body slds-card__body_inner">
+            {{- if or .Params.tags .Params.categories }}
+            <div class="slds-m-top_small slds-m-bottom_small">
+                {{- if .Params.categories }}
+                {{- $categories := .Params.categories }}
+                {{- if eq (printf "%T" $categories) "string" }}
+                {{- $categories = slice $categories }}
+                {{- end }}
+                <div class="slds-m-bottom_x-small">
+                    <span class="slds-text-body_small slds-text-color_weak slds-m-right_small"><strong>Categories:</strong></span>
+                    {{- range $categories }}
+                    <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}/" class="slds-badge slds-badge_inverse slds-m-right_xx-small slds-m-bottom_xx-small" style="text-decoration: none;">{{ . }}</a>
+                    {{- end }}
+                </div>
+                {{- end }}
+                {{- if .Params.tags }}
+                {{- $tags := .Params.tags }}
+                {{- if eq (printf "%T" $tags) "string" }}
+                {{- $tags = slice $tags }}
+                {{- end }}
+                <div>
+                    <span class="slds-text-body_small slds-text-color_weak slds-m-right_small"><strong>Tags:</strong></span>
+                    {{- range $tags }}
+                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" class="slds-badge slds-badge_lightest slds-m-right_xx-small slds-m-bottom_xx-small" style="text-decoration: none;">{{ . }}</a>
+                    {{- end }}
+                </div>
+                {{- end }}
+            </div>
+            {{- end }}
+
             {{- if not (.Param "hideMeta") }}
-            <div class="slds-media slds-media_center slds-m-bottom_medium slds-p-bottom_medium slds-border_bottom">
+            <div class="slds-media slds-media_center slds-m-top_small slds-m-bottom_medium slds-p-bottom_medium slds-border_bottom">
                 <div class="slds-media__body">
                     <ul class="slds-list_horizontal slds-has-dividers_right slds-list_dotted">
                         <li class="slds-item">
@@ -35,14 +64,6 @@
                         {{- end }}
                     </ul>
                 </div>
-            </div>
-            {{- end }}
-
-            {{- if .Params.tags }}
-            <div class="slds-m-bottom_large">
-                {{- range .Params.tags }}
-                <span class="slds-badge slds-badge_lightest slds-m-right_xx-small slds-m-bottom_xx-small">{{ . }}</span>
-                {{- end }}
             </div>
             {{- end }}
 

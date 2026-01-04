@@ -579,11 +579,11 @@ article .slds-text-longform.slds-text-body_large h6 {
 
 /* Card boundary padding - can be overridden by more specific selectors */
 .slds-card_boundary .slds-card__header {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem 0 2rem;
 }
 
 .slds-card_boundary .slds-card__body {
-    padding: 1.5rem 2rem;
+    padding: 0 2rem 1.5rem 2rem;
 }
 
 /* Button improvements */
