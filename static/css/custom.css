@@ -1,5 +1,12 @@
 /* Custom styles for Salesforce Lighting theme */
 
+/* Box-sizing: border-box for all elements to ensure padding doesn't break height calculations */
+*,
+*::before,
+*::after {
+    box-sizing: border-box !important;
+}
+
 /* Main content area */
 .slds-main {
     min-height: calc(100vh - 200px);
@@ -223,26 +230,85 @@
     border-radius: 0.5rem;
     background-color: #ffffff;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
     overflow: hidden;
-    height: 100%; /* Ensure card fills column height */
+    height: 100% !important; /* MUST have 100% height for equal heights */
+    display: flex !important; /* MUST be flex */
+    flex-direction: column !important; /* MUST be column */
+    box-sizing: border-box !important;
 }
 
+/* Header whitespace reduction and alignment */
 .post-card .slds-card__header {
     border-bottom: 1px solid #dddbda;
-    padding: 1.5rem 1.75rem;
+    padding: 1.5rem 1.75rem 1rem 1.75rem !important; /* Add top padding back for title spacing */
+    padding-top: 1.5rem !important; /* Adequate top padding */
+    margin-top: 0 !important; /* Remove top margin */
+    margin-bottom: 0 !important; /* Remove bottom margin */
     background-color: #fafaf9;
+    flex-shrink: 0; /* Prevent header from shrinking */
+    box-sizing: border-box !important;
+}
+
+/* Media object alignment - center icon with title */
+.post-card .slds-card__header .slds-media {
+    margin: 0 !important; /* Remove all margins */
+    width: 100%; /* Ensure media takes full width */
+    display: flex !important;
+    align-items: center !important; /* Center icon vertically with title text */
+}
+
+/* Icon container spacing and alignment */
+.post-card .slds-card__header .slds-media__figure {
+    margin-top: 0 !important;
+    margin-right: 0.75rem !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important; /* Center icon in its container */
+}
+
+/* Media body alignment */
+.post-card .slds-card__header .slds-media__body {
+    display: flex !important;
+    align-items: center !important; /* Center title text with icon */
+    flex: 1 1 auto;
+}
+
+/* Remove margins/padding from headings in header */
+.post-card .slds-card__header h2,
+.post-card .slds-card__header h3,
+.post-card .slds-card__header .slds-card__header-title {
+    margin: 0 !important; /* Eliminate top gap */
+    padding: 0 !important;
+    line-height: 1.4 !important; /* Better line height for alignment */
 }
 
 .post-card .slds-card__body {
-    padding: 0 1.75rem;
+    padding: 1.5rem 1.75rem !important; /* Add vertical padding to match horizontal padding */
     background-color: #ffffff;
+    flex-grow: 1 !important; /* ONLY flex-grow on body to push footer to bottom */
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
 }
 
 .post-card .slds-card__body_inner {
-    padding-top: 0;
-    padding-bottom: 0;
-    /* slds-grow class handles flex expansion */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    /* flex-grow is ONLY on .slds-card__body, not here */
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+}
+
+.post-card .slds-card__footer {
+    border-top: 1px solid #dddbda;
+    padding: 1rem 1.75rem !important;
+    background-color: #fafaf9;
+    flex-shrink: 0 !important; /* Prevent footer from shrinking */
+    margin-top: auto !important; /* Force button to bottom of card regardless of text length */
+    box-sizing: border-box !important;
 }
 
 .post-card .slds-card__footer {
@@ -570,19 +636,24 @@ article .slds-text-longform.slds-text-body_large h6 {
 /* Posts grid specific spacing */
 .posts-grid {
     margin-top: 1rem;
-    align-items: flex-start;
+    align-items: stretch !important; /* Ensure all columns stretch to equal height */
+    display: flex !important; /* Ensure flexbox is used */
 }
 
 .posts-grid .slds-col {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
+    display: flex !important; /* MUST be flex for equal heights */
+    flex-direction: column !important;
+    margin-bottom: 2rem !important; /* Consistent gap between rows */
+    box-sizing: border-box !important;
 }
 
 .posts-grid .slds-col .post-card {
-    width: 100%;
-    margin-bottom: 0;
-    flex: 1 1 auto; /* Allow card to grow to fill column height */
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    height: 100% !important; /* MUST have 100% height */
+    display: flex !important; /* MUST be flex */
+    flex-direction: column !important; /* MUST be column */
+    flex: 1 1 auto !important; /* Allow card to grow to fill column height */
 }
 
 /* Removed duplicate styles - consolidated above */
